@@ -225,16 +225,27 @@ struct fmt::formatter<ml_ModelConfig> {
     constexpr auto parse(fmt::format_parse_context& ctx) { return ctx.begin(); }
     auto           format(const ml_ModelConfig& p, fmt::format_context& ctx) const {
         return fmt::format_to(ctx.out(),
-            "ModelConfig(n_ctx: {}, n_threads: {}, n_threads_batch: {}, n_batch: {}, n_ubatch: {}, n_seq_max: {}"
-                      ", chat_template_path: {}, chat_template_content: {})",
+            "ModelConfig(n_ctx: {}, n_threads: {}, n_threads_batch: {}, n_batch: {}, n_ubatch: {}, n_seq_max: {}, "
+                      "n_gpu_layers: {}, "
+                      "chat_template_path: {}, chat_template_content: {}, enable_sampling: {}, grammar_str: {}, max_tokens: {}, "
+                      "enable_thinking: {}, verbose: {}, "
+                      "qnn_model_folder_path: {}, qnn_lib_folder_path: {})",
             lp(p.n_ctx),
             lp(p.n_threads),
             lp(p.n_threads_batch),
             lp(p.n_batch),
             lp(p.n_ubatch),
             lp(p.n_seq_max),
+            lp(p.n_gpu_layers),
             lp(p.chat_template_path),
-            lp(p.chat_template_content));
+            lp(p.chat_template_content),
+            lp(p.enable_sampling),
+            lp(p.grammar_str),
+            lp(p.max_tokens),
+            lp(p.enable_thinking),
+            lp(p.verbose),
+            lp(p.qnn_model_folder_path),
+            lp(p.qnn_lib_folder_path));
     }
 };
 
@@ -330,12 +341,17 @@ struct fmt::formatter<ml_VlmCreateInput> {
     constexpr auto parse(fmt::format_parse_context& ctx) { return ctx.begin(); }
     auto           format(const ml_VlmCreateInput& p, fmt::format_context& ctx) const {
         return fmt::format_to(ctx.out(),
-            "VlmCreateInput(model_path: {}, mmproj_path: {}, config: {}, plugin_id: {}, device_id: {})",
+            "VlmCreateInput(model_name: {}, model_path: {}, mmproj_path: {}, config: {}, plugin_id: {}, device_id: {}, "
+                      "tokenizer_path: {}, license_id: {}, license_key: {})",
+            lp(p.model_name),
             lp(p.model_path),
             lp(p.mmproj_path),
             lp(p.config),
             lp(p.plugin_id),
-            lp(p.device_id));
+            lp(p.device_id),
+            lp(p.tokenizer_path),
+            lp(p.license_id),
+            lp(p.license_key));
     }
 };
 
@@ -654,16 +670,14 @@ struct fmt::formatter<ml_CVModelConfig> {
     constexpr auto parse(fmt::format_parse_context& ctx) { return ctx.begin(); }
     auto           format(const ml_CVModelConfig& p, fmt::format_context& ctx) const {
         return fmt::format_to(ctx.out(),
-            "CVModelConfig(capabilities: {}, model_path: {}, system_library_path: {}, backend_library_path: {}, "
-                      "extension_library_path: {}, config_file_path: {}, char_dict_path: {})",
+            "ml_CVModelConfig(capabilities: {}, det_model_path: {}, rec_model_path: {}, char_dict_path: {}, "
+                      "qnn_model_folder_path: {}, qnn_lib_folder_path: {})",
             lp(p.capabilities),
-            lp(p.model_path),
+            lp(p.det_model_path),
             lp(p.rec_model_path),
-            lp(p.system_library_path),
-            lp(p.backend_library_path),
-            lp(p.extension_library_path),
-            lp(p.config_file_path),
-            lp(p.char_dict_path));
+            lp(p.char_dict_path),
+            lp(p.qnn_model_folder_path),
+            lp(p.qnn_lib_folder_path));
     }
 };
 
@@ -672,7 +686,8 @@ struct fmt::formatter<ml_CVCreateInput> {
     constexpr auto parse(fmt::format_parse_context& ctx) { return ctx.begin(); }
     auto           format(const ml_CVCreateInput& p, fmt::format_context& ctx) const {
         return fmt::format_to(ctx.out(),
-            "CVCreateInput(config: {}, plugin_id: {}, device_id: {})",
+            "CVCreateInput(model_name: {}, config: {}, plugin_id: {}, device_id: {})",
+            lp(p.model_name),
             lp(p.config),
             lp(p.plugin_id),
             lp(p.device_id));
@@ -775,6 +790,45 @@ struct fmt::formatter<ml_AsrListSupportedLanguagesOutput> {
             "AsrListSupportedLanguagesOutput(language_codes: {}, language_count: {})",
             lp(p.language_codes),
             lp(p.language_count));
+    }
+};
+
+// ASR Streaming formatters
+template <>
+struct fmt::formatter<ml_ASRStreamConfig> {
+    constexpr auto parse(fmt::format_parse_context& ctx) { return ctx.begin(); }
+    auto           format(const ml_ASRStreamConfig& p, fmt::format_context& ctx) const {
+        return fmt::format_to(ctx.out(),
+            "ASRStreamConfig(chunk_duration: {}, overlap_duration: {}, sample_rate: {}, max_queue_size: {}, "
+                      "buffer_size: {}, timestamps: {}, beam_size: {})",
+            lp(p.chunk_duration),
+            lp(p.overlap_duration),
+            lp(p.sample_rate),
+            lp(p.max_queue_size),
+            lp(p.buffer_size),
+            lp(p.timestamps),
+            lp(p.beam_size));
+    }
+};
+
+template <>
+struct fmt::formatter<ml_AsrStreamBeginInput> {
+    constexpr auto parse(fmt::format_parse_context& ctx) { return ctx.begin(); }
+    auto           format(const ml_AsrStreamBeginInput& p, fmt::format_context& ctx) const {
+        return fmt::format_to(ctx.out(),
+            "AsrStreamBeginInput(stream_config: {}, language: {}, on_transcription: {}, user_data: {})",
+            lp(fmt::ptr(p.stream_config)),
+            lp(p.language),
+            lp(fmt::ptr(p.on_transcription)),
+            lp(fmt::ptr(p.user_data)));
+    }
+};
+
+template <>
+struct fmt::formatter<ml_AsrStreamStopInput> {
+    constexpr auto parse(fmt::format_parse_context& ctx) { return ctx.begin(); }
+    auto           format(const ml_AsrStreamStopInput& p, fmt::format_context& ctx) const {
+        return fmt::format_to(ctx.out(), "AsrStreamStopInput(graceful: {})", lp(p.graceful));
     }
 };
 

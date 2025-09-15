@@ -96,6 +96,14 @@ typedef enum {
     ML_ERROR_ASR_AUDIO_FORMAT  = -205002, /**< Unsupported ASR audio format */
     ML_ERROR_ASR_LANGUAGE      = -205003, /**< Unsupported ASR language */
 
+    /* ===== ASR Streaming ERRORS (205xxx) ===== */
+
+    ML_ERROR_ASR_STREAM_NOT_STARTED    = -205010, /**< Streaming not started */
+    ML_ERROR_ASR_STREAM_ALREADY_ACTIVE = -205011, /**< Streaming already active */
+    ML_ERROR_ASR_STREAM_INVALID_AUDIO  = -205012, /**< Invalid audio data */
+    ML_ERROR_ASR_STREAM_BUFFER_FULL    = -205013, /**< Audio buffer full */
+    ML_ERROR_ASR_STREAM_CALLBACK_ERROR = -205014, /**< Callback execution error */
+
     /* ===== TTS ERRORS (206xxx) ===== */
 
     ML_ERROR_TTS_SYNTHESIS    = -206001, /**< TTS synthesis failed */
@@ -327,24 +335,25 @@ typedef struct {
 
 /** LLM / VLM model configuration */
 typedef struct {
-    int32_t     n_ctx;                  // text context, 0 = from model
-    int32_t     n_threads;              // number of threads to use for generation
-    int32_t     n_threads_batch;        // number of threads to use for batch processing
-    int32_t     n_batch;                // logical maximum batch size that can be submitted to llama_decode
-    int32_t     n_ubatch;               // physical maximum batch size
-    int32_t     n_seq_max;              // max number of sequences (i.e. distinct states for recurrent models)
-    int32_t     n_gpu_layers;           // number of layers to offload to GPU, 0 = all layers on CPU
+    int32_t n_ctx;            // text context, 0 = from model
+    int32_t n_threads;        // number of threads to use for generation
+    int32_t n_threads_batch;  // number of threads to use for batch processing
+    int32_t n_batch;          // logical maximum batch size that can be submitted to llama_decode
+    int32_t n_ubatch;         // physical maximum batch size
+    int32_t n_seq_max;        // max number of sequences (i.e. distinct states for recurrent models)
+    int32_t n_gpu_layers;     // number of layers to offload to GPU, 0 = all layers on CPU
+
+    // TODO: consider removing the following fields from ModelConfig, or move to another struct
     ml_Path     chat_template_path;     // path to chat template file, optional
     const char* chat_template_content;  // content of chat template file, optional
+    bool        enable_sampling;        // enable sampling
+    const char* grammar_str;            // grammar string
+    int32_t     max_tokens;             // max tokens to generate
+    bool        enable_thinking;        // enable thinking mode for Qwen models
+    bool        verbose;                // verbose logging
     // For QNN
-    ml_Path system_library_path;    /* System library path */
-    ml_Path backend_library_path;   /* Backend library path */
-    ml_Path extension_library_path; /* Extension library path */
-    ml_Path config_file_path;       /* Config file path */
-    ml_Path embedded_tokens_path;   /* Embedded tokens path */
-    int32_t max_tokens;             /* Maximum tokens */
-    bool    enable_thinking;        /* Enable thinking */
-    bool    verbose;                /* Verbose */
+    ml_Path qnn_model_folder_path;  // path to QNN model folder, default same as model_path
+    ml_Path qnn_lib_folder_path;    // path to QNN library folder, default same as model_path
 } ml_ModelConfig;
 
 /* ====================  LLM Handle  ======================================== */
@@ -352,6 +361,7 @@ typedef struct ml_LLM ml_LLM; /* Opaque LLM handle */
 
 /* ====================  Lifecycle Management  ============================== */
 typedef struct {
+    const char*    model_name;     /** Name of the model */
     ml_Path        model_path;     /** Path to the model file */
     ml_Path        tokenizer_path; /** Path to the tokenizer file */
     ml_ModelConfig config;         /** Model configuration */
@@ -501,6 +511,7 @@ typedef struct ml_VLM ml_VLM; /* Opaque VLM handle */
 /* ====================  Lifecycle Management  ============================== */
 
 typedef struct {
+    const char*    model_name;     /** Name of the model */
     ml_Path        model_path;     /** Path to the model file */
     ml_Path        mmproj_path;    /** Path to the mmproj file */
     ml_ModelConfig config;         /** Model configuration */
@@ -617,9 +628,11 @@ typedef struct ml_Embedder ml_Embedder; /* Opaque embedder handle */
 
 /** Input structure for creating an embedder */
 typedef struct {
+    const char* model_name;     /** Name of the model */
     ml_Path     model_path;     /** Path to the model file */
     ml_Path     tokenizer_path; /** Path to the tokenizer file */
     ml_PluginId plugin_id;      /** Plugin to use for the model */
+    const char* device_id;      /** device to use for the model */
 } ml_EmbedderCreateInput;
 
 /**
@@ -717,9 +730,11 @@ typedef struct ml_Reranker ml_Reranker; /* Opaque reranker handle */
 
 /** Input structure for creating a reranker */
 typedef struct {
+    const char* model_name;     /** Name of the model */
     ml_Path     model_path;     /** Path to the model file */
     ml_Path     tokenizer_path; /** Path to the tokenizer file */
     ml_PluginId plugin_id;      /** Plugin to use for the model */
+    const char* device_id;      /** device to use for the model */
 } ml_RerankerCreateInput;
 
 /**
@@ -825,6 +840,7 @@ typedef struct ml_ImageGen ml_ImageGen; /* Opaque image generator handle */
 
 /** Input structure for creating an image generator */
 typedef struct {
+    const char* model_name;            /** Name of the model */
     ml_Path     model_path;            /** Path to the model file */
     ml_Path     scheduler_config_path; /** Path to the scheduler config file */
     ml_PluginId plugin_id;             /** Plugin to use for the model */
@@ -932,11 +948,16 @@ typedef struct ml_ASR ml_ASR; /* Opaque ASR handle */
 
 /** Input structure for creating an ASR instance */
 typedef struct {
-    ml_Path     model_path;     /** Path to the model file */
-    ml_Path     tokenizer_path; /** Path to the tokenizer file (may be NULL) */
-    const char* language;       /** Language code (ISO 639-1 or NULL) */
-    ml_PluginId plugin_id;      /** Plugin to use for the model */
-    const char* device_id;      /** Device to use for the model, NULL for default device */
+    const char*    model_name;     /** Name of the model */
+    ml_Path        model_path;     /** Path to the model file */
+    ml_Path        tokenizer_path; /** Path to the tokenizer file (may be NULL) */
+    ml_ModelConfig config;         /** Model configuration */
+    const char*    language;       /** Language code (ISO 639-1 or NULL) */
+    ml_PluginId    plugin_id;      /** Plugin to use for the model */
+    const char*    device_id;      /** Device to use for the model, NULL for default device */
+    const char*    license_id; /** licence id for loading NPU models, must be provided upon the first use of the license
+                              key. null terminated string */
+    const char* license_key;   /** licence key for loading NPU models, null terminated string */
 } ml_AsrCreateInput;
 
 /**
@@ -1018,6 +1039,90 @@ ML_API int32_t ml_asr_list_supported_languages(
     const ml_ASR* handle, const ml_AsrListSupportedLanguagesInput* input, ml_AsrListSupportedLanguagesOutput* output);
 
 /* ========================================================================== */
+/*                              ASR STREAMING                                  */
+/* ========================================================================== */
+
+/* ====================  Streaming Types & Callbacks  ====================== */
+
+/** Callback for streaming transcription updates */
+typedef void (*ml_asr_transcription_callback)(const char* text, void* user_data);
+
+/** ASR streaming configuration */
+typedef struct {
+    float       chunk_duration;   /* Duration in seconds for each chunk (default: 4.0) */
+    float       overlap_duration; /* Overlap between chunks in seconds (default: 3.0) */
+    int32_t     sample_rate;      /* Audio sample rate (default: 16000) */
+    int32_t     max_queue_size;   /* Maximum chunks in processing queue (default: 10) */
+    int32_t     buffer_size;      /* Audio buffer size for input (default: 512) */
+    const char* timestamps;       /* Timestamp mode: "none", "segment", "word" */
+    int32_t     beam_size;        /* Beam search size */
+} ml_ASRStreamConfig;
+
+/* ====================  Streaming Operations  ============================== */
+
+/** Input structure for beginning ASR streaming */
+typedef struct {
+    const ml_ASRStreamConfig*     stream_config;    /** Streaming configuration (optional) */
+    const char*                   language;         /** Language code (optional) */
+    ml_asr_transcription_callback on_transcription; /** Required: transcription updates */
+    void*                         user_data;        /** User data passed to callbacks */
+} ml_AsrStreamBeginInput;
+
+/** Output structure for streaming begin (minimal) */
+typedef struct {
+    void* reserved; /** Reserved for future use */
+} ml_AsrStreamBeginOutput;
+
+/**
+ * @brief Begin streaming ASR with specified callbacks
+ *
+ * @param handle[in]: ASR handle
+ * @param input[in]: Streaming callbacks configuration
+ * @param output[out]: Output structure (reserved for future use)
+ *
+ * @return ml_ErrorCode: ML_SUCCESS on success, negative on failure.
+ *
+ * @thread_safety: Not thread-safe
+ */
+ML_API int32_t ml_asr_stream_begin(
+    ml_ASR* handle, const ml_AsrStreamBeginInput* input, ml_AsrStreamBeginOutput* output);
+
+/** Input structure for processing audio data */
+typedef struct {
+    const float* audio_data; /** Audio samples (float32) */
+    int32_t      length;     /** Number of samples */
+} ml_AsrStreamPushAudioInput;
+
+/**
+ * @brief Push audio data to streaming ASR for processing
+ *
+ * @param handle[in]: ASR handle
+ * @param input[in]: Audio data to process
+ *
+ * @return ml_ErrorCode: ML_SUCCESS on success, negative on failure.
+ *
+ * @thread_safety: Not thread-safe
+ */
+ML_API int32_t ml_asr_stream_push_audio(ml_ASR* handle, const ml_AsrStreamPushAudioInput* input);
+
+/** Input structure for stopping streaming */
+typedef struct {
+    bool graceful; /** If true, processes remaining audio before stopping; if false, stops immediately */
+} ml_AsrStreamStopInput;
+
+/**
+ * @brief Stop streaming ASR
+ *
+ * @param handle[in]: ASR handle
+ * @param input[in]: Stop configuration (graceful vs immediate)
+ *
+ * @return ml_ErrorCode: ML_SUCCESS on success, negative on failure.
+ *
+ * @thread_safety: Not thread-safe
+ */
+ML_API int32_t ml_asr_stream_stop(ml_ASR* handle, const ml_AsrStreamStopInput* input);
+
+/* ========================================================================== */
 /*                              TEXT-TO-SPEECH (TTS)                         */
 /* ========================================================================== */
 
@@ -1053,6 +1158,7 @@ typedef struct ml_TTS ml_TTS; /* Opaque TTS handle */
 
 /** Input structure for creating a TTS instance */
 typedef struct {
+    const char* model_name;   /** Name of the model */
     ml_Path     model_path;   /** Path to the TTS model file */
     ml_Path     vocoder_path; /** Path to the vocoder file */
     ml_PluginId plugin_id;    /** Plugin to use for the model */
@@ -1172,19 +1278,14 @@ typedef enum {
 
 /** CV model preprocessing configuration */
 typedef struct {
-    ml_CVCapabilities capabilities; /* Capabilities */
-
-    // MLX-OCR
-    ml_Path det_model_path; /* detection model path */
-    ml_Path rec_model_path; /* recognition model path */
+    ml_CVCapabilities capabilities;   /* Capabilities */
+    ml_Path           det_model_path; /* detection model path */
+    ml_Path           rec_model_path; /* recognition model path */
+    ml_Path           char_dict_path; /* Character dictionary path */
 
     // QNN
-    ml_Path model_path;             /* Model path */
-    ml_Path system_library_path;    /* System library path */
-    ml_Path backend_library_path;   /* Backend library path */
-    ml_Path extension_library_path; /* Extension library path */
-    ml_Path config_file_path;       /* Config file path */
-    ml_Path char_dict_path;         /* Character dictionary path */
+    ml_Path qnn_model_folder_path; /* Model path */
+    ml_Path qnn_lib_folder_path;   /* System library path */
 } ml_CVModelConfig;
 
 /* ====================  Generic CV Model  ================================== */
@@ -1192,9 +1293,10 @@ typedef struct {
 typedef struct ml_CV ml_CV; /* Opaque CV model handle */
 
 typedef struct {
-    ml_CVModelConfig config;
-    ml_PluginId      plugin_id;
-    const char*      device_id;
+    const char*      model_name; /** Name of the model */
+    ml_CVModelConfig config;     /** CV model configuration */
+    ml_PluginId      plugin_id;  /** Plugin to use for the model */
+    const char*      device_id;  /** device to use for the model */
     const char* license_id;  /** licence id for loading NPU models, must be provided upon the first use of the license
                                 key. null terminated string */
     const char* license_key; /** licence key for loading NPU models, null terminated string */
