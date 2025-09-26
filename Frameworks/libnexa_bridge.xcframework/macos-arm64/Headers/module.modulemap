@@ -1,6 +1,5 @@
 module NexaBridge [system] {
     header "ml.h"
-    header "plugin/Plugin.h"
     link "c++"
     link framework "Accelerate"
     link framework "Metal"
