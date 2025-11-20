@@ -1,8 +1,0 @@
-module NexaBridge [system] {
-    header "ml.h"
-    link "c++"
-    link framework "Accelerate"
-    link framework "Metal"
-    link framework "Foundation"
-    export *
-}
