@@ -327,10 +327,10 @@ public struct LogLevel {
   public static let error: NexaSdk.LogLevel
 }
 @_hasMissingDesignatedInitializers public class NexaAI {
-  public class var version: Swift.String {
+  public class func install(_ logLevel: [NexaSdk.LogLevel] = [.error])
+  public static var version: Swift.String {
     get
   }
-  public class func install(_ logLevel: [NexaSdk.LogLevel] = [.error])
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @globalActor public actor NexaAIActor {
@@ -342,7 +342,7 @@ public struct LogLevel {
     get
   }
 }
-public enum Plugin : Swift.String {
+public enum Plugin : Swift.String, Swift.CaseIterable {
   public struct Device {
     public let id: Swift.String
     public let name: Swift.String
@@ -370,7 +370,11 @@ public enum Plugin : Swift.String {
   #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
   #endif
+  public typealias AllCases = [NexaSdk.Plugin]
   public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [NexaSdk.Plugin] {
+    get
+  }
   public var rawValue: Swift.String {
     get
   }

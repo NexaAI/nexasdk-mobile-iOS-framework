@@ -11850,48 +11850,6 @@
         "printedName": "NexaAI",
         "children": [
           {
-            "kind": "Var",
-            "name": "version",
-            "printedName": "version",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:7NexaSdk0A2AIC7versionSSvpZ",
-            "mangledName": "$s7NexaSdk0A2AIC7versionSSvpZ",
-            "moduleName": "NexaSdk",
-            "static": true,
-            "declAttributes": [
-              "AccessControl"
-            ],
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:7NexaSdk0A2AIC7versionSSvgZ",
-                "mangledName": "$s7NexaSdk0A2AIC7versionSSvgZ",
-                "moduleName": "NexaSdk",
-                "static": true,
-                "accessorKind": "get"
-              }
-            ]
-          },
-          {
             "kind": "Function",
             "name": "install",
             "printedName": "install(_:)",
@@ -11926,6 +11884,52 @@
               "AccessControl"
             ],
             "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "version",
+            "printedName": "version",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:7NexaSdk0A2AIC7versionSSvpZ",
+            "mangledName": "$s7NexaSdk0A2AIC7versionSSvpZ",
+            "moduleName": "NexaSdk",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7NexaSdk0A2AIC7versionSSvgZ",
+                "mangledName": "$s7NexaSdk0A2AIC7versionSSvgZ",
+                "moduleName": "NexaSdk",
+                "static": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
           }
         ],
         "declKind": "Class",
@@ -12929,6 +12933,66 @@
                 "accessorKind": "get"
               }
             ]
+          },
+          {
+            "kind": "Var",
+            "name": "allCases",
+            "printedName": "allCases",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[NexaSdk.Plugin]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Plugin",
+                    "printedName": "NexaSdk.Plugin",
+                    "usr": "s:7NexaSdk6PluginO"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:7NexaSdk6PluginO8allCasesSayACGvpZ",
+            "mangledName": "$s7NexaSdk6PluginO8allCasesSayACGvpZ",
+            "moduleName": "NexaSdk",
+            "static": true,
+            "implicit": true,
+            "declAttributes": [
+              "Nonisolated"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[NexaSdk.Plugin]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Plugin",
+                        "printedName": "NexaSdk.Plugin",
+                        "usr": "s:7NexaSdk6PluginO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7NexaSdk6PluginO8allCasesSayACGvgZ",
+                "mangledName": "$s7NexaSdk6PluginO8allCasesSayACGvgZ",
+                "moduleName": "NexaSdk",
+                "static": true,
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
           }
         ],
         "declKind": "Enum",
@@ -12989,6 +13053,36 @@
             ],
             "usr": "s:SY",
             "mangledName": "$sSY"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CaseIterable",
+            "printedName": "CaseIterable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "AllCases",
+                "printedName": "AllCases",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[NexaSdk.Plugin]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Plugin",
+                        "printedName": "NexaSdk.Plugin",
+                        "usr": "s:7NexaSdk6PluginO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s12CaseIterableP",
+            "mangledName": "$ss12CaseIterableP"
           }
         ]
       },
@@ -15003,70 +15097,70 @@
     {
       "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Plugin.swift",
       "kind": "IntegerLiteral",
-      "offset": 456,
+      "offset": 470,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Plugin.swift",
       "kind": "IntegerLiteral",
-      "offset": 461,
+      "offset": 475,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Plugin.swift",
       "kind": "IntegerLiteral",
-      "offset": 525,
+      "offset": 539,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Plugin.swift",
       "kind": "IntegerLiteral",
-      "offset": 530,
+      "offset": 544,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Plugin.swift",
       "kind": "IntegerLiteral",
-      "offset": 594,
+      "offset": 608,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Plugin.swift",
       "kind": "IntegerLiteral",
-      "offset": 599,
+      "offset": 613,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Plugin.swift",
       "kind": "IntegerLiteral",
-      "offset": 663,
+      "offset": 677,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Plugin.swift",
       "kind": "IntegerLiteral",
-      "offset": 668,
+      "offset": 682,
       "length": 1,
       "value": "3"
     },
     {
       "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Plugin.swift",
       "kind": "IntegerLiteral",
-      "offset": 732,
+      "offset": 746,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Plugin.swift",
       "kind": "IntegerLiteral",
-      "offset": 737,
+      "offset": 751,
       "length": 1,
       "value": "4"
     },
