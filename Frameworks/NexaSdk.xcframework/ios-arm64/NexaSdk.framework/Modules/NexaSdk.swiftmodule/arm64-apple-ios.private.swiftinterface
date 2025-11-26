@@ -4,6 +4,7 @@
 // swift-module-flags-ignorable:  -formal-cxx-interoperability-mode=swift-6 -interface-compiler-version 6.2.1
 import Foundation
 @_exported import NexaSdk
+import OSLog
 import Swift
 import _Concurrency
 import _StringProcessing
@@ -29,15 +30,15 @@ public enum Role : Swift.String {
 }
 public struct EmbeddingConfig {
   public var batchSize: Swift.Int32
-  public var normalize: Swift.Bool
-  public var normalizeMethod: NexaSdk.EmbeddingConfig.NormalizeMethod
-  public init(batchSize: Swift.Int32, normalize: Swift.Bool, normalizeMethod: NexaSdk.EmbeddingConfig.NormalizeMethod)
+  public var normalizeMethod: NexaSdk.EmbeddingConfig.NormalizeMethod?
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(batchSize: Swift.Int32, normalizeMethod: NexaSdk.EmbeddingConfig.NormalizeMethod? = .l2)
+  #endif
 }
 extension NexaSdk.EmbeddingConfig {
   public enum NormalizeMethod : Swift.String {
     case l2
     case mean
-    case none
     #if compiler(>=5.3) && $NonescapableTypes
     public init?(rawValue: Swift.String)
     #endif
@@ -96,14 +97,16 @@ public struct ProfileData : Swift.CustomStringConvertible, Swift.Codable {
 }
 public struct RerankConfig {
   public var batchSize: Swift.Int32
-  public var normalize: Swift.Bool
-  public var normalizeMethod: NexaSdk.RerankConfig.NormalizeMethod
+  public var normalizeMethod: NexaSdk.RerankConfig.NormalizeMethod?
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(batchSize: Swift.Int32 = 32, normalizeMethod: NexaSdk.RerankConfig.NormalizeMethod? = .softmax)
+  #endif
 }
 extension NexaSdk.RerankConfig {
   public enum NormalizeMethod : Swift.String, Swift.CaseIterable {
     case softmax
     case minMax
-    case none
+    case l2
     #if compiler(>=5.3) && $NonescapableTypes
     public init?(rawValue: Swift.String)
     #endif
@@ -139,9 +142,15 @@ public struct SamplerConfig : Swift.Codable {
 final public class Asr {
   final public let plugin: NexaSdk.Plugin
   public init(plugin: NexaSdk.Plugin = .ane) throws
-  final public func load(_ options: NexaSdk.AsrOptions) throws
-  final public func transcribe(options: NexaSdk.AsrTranscribeOptions) throws -> NexaSdk.AsrResponse
+  @NexaSdk.NexaAIActor final public func load(_ options: NexaSdk.AsrOptions) async throws
+  @NexaSdk.NexaAIActor final public func transcribe(options: NexaSdk.AsrTranscribeOptions) throws -> NexaSdk.AsrResponse
+  final public func supportedLanguages() -> [Swift.String]
   @objc deinit
+}
+extension NexaSdk.Asr {
+  @NexaSdk.NexaAIActor final public func load(from repoFolder: Foundation.URL) async throws
+}
+extension NexaSdk.Asr {
   public enum AsrError : Foundation.LocalizedError, Swift.CustomStringConvertible {
     case pluginNotSupport(NexaSdk.Plugin)
     case loadError(Swift.Int32)
@@ -183,16 +192,18 @@ public struct AsrTranscribeOptions : Swift.Codable {
 }
 public struct AsrResult : Swift.Codable {
   public let transcript: Swift.String
-  public let confidenceScores: [Swift.Float]
+  public let confidences: [Swift.Float]
   public let timestamps: [Swift.Float]
-  public init(transcript: Swift.String, confidenceScores: [Swift.Float], timestamps: [Swift.Float])
+  public init(transcript: Swift.String, confidences: [Swift.Float] = [], timestamps: [Swift.Float] = [])
   public func encode(to encoder: any Swift.Encoder) throws
   public init(from decoder: any Swift.Decoder) throws
 }
 public struct AsrResponse : Swift.Codable {
   public let asrResult: NexaSdk.AsrResult
-  public let profileData: NexaSdk.ProfileData
-  public init(asrResult: NexaSdk.AsrResult, profileData: NexaSdk.ProfileData)
+  public let profileData: NexaSdk.ProfileData?
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(asrResult: NexaSdk.AsrResult, profileData: NexaSdk.ProfileData? = nil)
+  #endif
   public func encode(to encoder: any Swift.Encoder) throws
   public init(from decoder: any Swift.Decoder) throws
 }
@@ -207,8 +218,11 @@ final public class Embedder {
   final public func embed(inputIds: [[Swift.Int32]], config: NexaSdk.EmbeddingConfig) throws -> NexaSdk.EmbedResult
   final public func embed(texts: [Swift.String], config: NexaSdk.EmbeddingConfig) throws -> NexaSdk.EmbedResult
   final public func embed(imagePaths: [Swift.String], config: NexaSdk.EmbeddingConfig) throws -> NexaSdk.EmbedResult
-  final public func embeddingDim() throws -> Swift.Int32
+  final public func dim() throws -> Swift.Int32
   @objc deinit
+}
+extension NexaSdk.Embedder {
+  convenience public init(from repoFolder: Foundation.URL, plugin: NexaSdk.Plugin = .cpu_gpu) throws
 }
 extension NexaSdk.Embedder {
   public enum EmbedderError : Foundation.LocalizedError {
@@ -224,6 +238,7 @@ extension NexaSdk.Embedder {
   }
 }
 final public class LLM : NexaSdk.Model {
+  final public let plugin: NexaSdk.Plugin
   @NexaSdk.NexaAIActor final public var lastProfileData: NexaSdk.ProfileData? {
     get
   }
@@ -263,16 +278,18 @@ public enum LLMError : Foundation.LocalizedError, Swift.CustomStringConvertible 
     get
   }
 }
-public enum ModelType : Swift.CaseIterable {
+public enum ModelType : Swift.String, Swift.CaseIterable {
   case llm
   case vlm
-  public static func == (a: NexaSdk.ModelType, b: NexaSdk.ModelType) -> Swift.Bool
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
   public typealias AllCases = [NexaSdk.ModelType]
+  public typealias RawValue = Swift.String
   nonisolated public static var allCases: [NexaSdk.ModelType] {
     get
   }
-  public func hash(into hasher: inout Swift.Hasher)
-  public var hashValue: Swift.Int {
+  public var rawValue: Swift.String {
     get
   }
 }
@@ -288,9 +305,11 @@ public protocol Model {
   func stopStream()
   var isLoaded: Swift.Bool { get }
   var type: NexaSdk.ModelType { get }
+  var plugin: NexaSdk.Plugin { get }
 }
 extension NexaSdk.Model {
   @NexaSdk.NexaAIActor public func generate(messages: [NexaSdk.ChatMessage], options: NexaSdk.GenerationOptions = .init()) throws -> NexaSdk.GenerateResult
+  @NexaSdk.NexaAIActor public func load(from repoFolder: Foundation.URL, modelFileName: Swift.String = "", mmprojFileName: Swift.String = "") throws
 }
 public struct GenerateResult {
   public var response: Swift.String
@@ -380,13 +399,18 @@ public enum Plugin : Swift.String, Swift.CaseIterable {
   }
 }
 public struct RerankerResult {
+  public let scores: [Swift.Float]
+  public let profileData: NexaSdk.ProfileData
 }
 final public class Reranker {
   #if compiler(>=5.3) && $NonescapableTypes
   public init(modelPath: Swift.String, tokenizerPath: Swift.String? = nil, deviceId: Swift.String? = nil, plugin: NexaSdk.Plugin = .cpu_gpu) throws
   #endif
-  @NexaSdk.NexaAIActor final public func rerank(_ query: Swift.String, documents: [Swift.String], config: NexaSdk.RerankConfig) throws -> NexaSdk.RerankerResult
+  @NexaSdk.NexaAIActor final public func rerank(_ query: Swift.String, documents: [Swift.String], config: NexaSdk.RerankConfig = .init()) throws -> NexaSdk.RerankerResult
   @objc deinit
+}
+extension NexaSdk.Reranker {
+  convenience public init(from repoFolder: Foundation.URL, plugin: NexaSdk.Plugin = .cpu_gpu) throws
 }
 extension NexaSdk.Reranker {
   public enum RerankerError : Foundation.LocalizedError {
@@ -401,6 +425,7 @@ extension NexaSdk.Reranker {
   }
 }
 final public class VLM : NexaSdk.Model {
+  final public let plugin: NexaSdk.Plugin
   @NexaSdk.NexaAIActor final public var lastProfileData: NexaSdk.ProfileData? {
     get
   }
@@ -453,6 +478,7 @@ extension NexaSdk.Language : Swift.Hashable {}
 extension NexaSdk.Language : Swift.RawRepresentable {}
 extension NexaSdk.ModelType : Swift.Equatable {}
 extension NexaSdk.ModelType : Swift.Hashable {}
+extension NexaSdk.ModelType : Swift.RawRepresentable {}
 extension NexaSdk.NexaAIActor : _Concurrency.GlobalActor {}
 extension NexaSdk.Plugin : Swift.Equatable {}
 extension NexaSdk.Plugin : Swift.Hashable {}

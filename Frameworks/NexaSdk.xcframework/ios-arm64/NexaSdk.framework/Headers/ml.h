@@ -1481,11 +1481,11 @@ ML_API int32_t ml_diarize_infer(ml_Diarize* handle, const ml_DiarizeInferInput* 
 extern "C" {
 #endif
 
-PLUGIN_API ml_PluginId      llama_plugin_id();
-PLUGIN_API void* create_llama_plugin();
+PLUGIN_API ml_PluginId llama_plugin_id();
+PLUGIN_API void*       create_llama_plugin();
 
-PLUGIN_API ml_PluginId      ane_plugin_id();
-PLUGIN_API void* create_ane_plugin();
+PLUGIN_API ml_PluginId ane_plugin_id();
+PLUGIN_API void*       create_ane_plugin();
 
 #ifdef __cplusplus
 }
