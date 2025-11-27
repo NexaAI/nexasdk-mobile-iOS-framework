@@ -1297,6 +1297,9 @@ typedef struct {
     const char*    text;          /* Text result (example: OCR) (caller must free with ml_free) */
     float*         embedding;     /* Feature embedding (example: CLIP embedding) (caller must free with ml_free) */
     int32_t        embedding_dim; /* Embedding dimension */
+    float*         mask;          /* Mask (example: segmentation mask) (caller must free with ml_free) */
+    int32_t        mask_h;        /* Mask height */
+    int32_t        mask_w;        /* Mask width */
 } ml_CVResult;
 
 /** CV capabilities */

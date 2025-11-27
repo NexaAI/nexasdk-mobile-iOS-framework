@@ -15427,42 +15427,42 @@
     {
       "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Model.swift",
       "kind": "StringLiteral",
-      "offset": 5178,
+      "offset": 5034,
       "length": 11,
       "value": "\"ModelType\""
     },
     {
       "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Model.swift",
       "kind": "StringLiteral",
-      "offset": 5215,
+      "offset": 5071,
       "length": 10,
       "value": "\"PluginId\""
     },
     {
       "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Model.swift",
       "kind": "StringLiteral",
-      "offset": 5929,
+      "offset": 5785,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Model.swift",
       "kind": "BooleanLiteral",
-      "offset": 5956,
+      "offset": 5812,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Model.swift",
       "kind": "IntegerLiteral",
-      "offset": 6535,
+      "offset": 6391,
       "length": 1,
       "value": "8"
     },
     {
       "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Model.swift",
       "kind": "BooleanLiteral",
-      "offset": 6569,
+      "offset": 6425,
       "length": 5,
       "value": "false"
     },
