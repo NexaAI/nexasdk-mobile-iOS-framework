@@ -9,7 +9,7 @@
 	<key>CFBundleExecutable</key>
 	<string>NexaSdk</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.nexa.ai.NexaSdk</string>
+	<string>com.nexa.ai.NexaIOSSdk</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -17,13 +17,13 @@
 	<key>CFBundlePackageType</key>
 	<string>FMWK</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.0.4</string>
+	<string>0.0.5</string>
 	<key>CFBundleSupportedPlatforms</key>
 	<array>
 		<string>iPhoneOS</string>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>202511271050</string>
+	<string>202512041235</string>
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>

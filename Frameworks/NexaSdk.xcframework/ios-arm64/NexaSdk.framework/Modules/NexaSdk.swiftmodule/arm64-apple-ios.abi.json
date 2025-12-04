@@ -15082,581 +15082,581 @@
   },
   "ConstValues": [
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Data\/ChatMessage.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Data\/ChatMessage.swift",
       "kind": "Array",
       "offset": 258,
       "length": 2,
       "value": "[]"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Data\/ChatMessage.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Data\/ChatMessage.swift",
       "kind": "Array",
       "offset": 289,
       "length": 2,
       "value": "[]"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Data\/GenerationConfig.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Data\/GenerationConfig.swift",
       "kind": "IntegerLiteral",
       "offset": 647,
       "length": 4,
       "value": "1024"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Data\/GenerationConfig.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Data\/GenerationConfig.swift",
       "kind": "Array",
       "offset": 678,
       "length": 2,
       "value": "[]"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Data\/GenerationConfig.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Data\/GenerationConfig.swift",
       "kind": "IntegerLiteral",
       "offset": 705,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Data\/GenerationConfig.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Data\/GenerationConfig.swift",
       "kind": "Array",
       "offset": 788,
       "length": 2,
       "value": "[]"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Data\/GenerationConfig.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Data\/GenerationConfig.swift",
       "kind": "Array",
       "offset": 823,
       "length": 2,
       "value": "[]"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Data\/GenerationConfig.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Data\/GenerationConfig.swift",
       "kind": "IntegerLiteral",
       "offset": 859,
       "length": 3,
       "value": "256"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Data\/ModelConfig.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Data\/ModelConfig.swift",
       "kind": "IntegerLiteral",
       "offset": 836,
       "length": 4,
       "value": "2048"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Data\/ModelConfig.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Data\/ModelConfig.swift",
       "kind": "IntegerLiteral",
       "offset": 864,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Data\/ModelConfig.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Data\/ModelConfig.swift",
       "kind": "IntegerLiteral",
       "offset": 894,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Data\/ModelConfig.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Data\/ModelConfig.swift",
       "kind": "IntegerLiteral",
       "offset": 917,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Data\/ModelConfig.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Data\/ModelConfig.swift",
       "kind": "IntegerLiteral",
       "offset": 941,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Data\/ModelConfig.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Data\/ModelConfig.swift",
       "kind": "IntegerLiteral",
       "offset": 965,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Data\/ModelConfig.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Data\/ModelConfig.swift",
       "kind": "IntegerLiteral",
       "offset": 1098,
       "length": 4,
       "value": "2048"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Data\/ModelConfig.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Data\/ModelConfig.swift",
       "kind": "IntegerLiteral",
       "offset": 1130,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Data\/ModelConfig.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Data\/ModelConfig.swift",
       "kind": "IntegerLiteral",
       "offset": 1164,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Data\/ModelConfig.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Data\/ModelConfig.swift",
       "kind": "IntegerLiteral",
       "offset": 1191,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Data\/ModelConfig.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Data\/ModelConfig.swift",
       "kind": "IntegerLiteral",
       "offset": 1219,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Data\/ModelConfig.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Data\/ModelConfig.swift",
       "kind": "IntegerLiteral",
       "offset": 1247,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Data\/ProfileData.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Data\/ProfileData.swift",
       "kind": "IntegerLiteral",
       "offset": 888,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Data\/ProfileData.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Data\/ProfileData.swift",
       "kind": "IntegerLiteral",
       "offset": 919,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Data\/ProfileData.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Data\/ProfileData.swift",
       "kind": "IntegerLiteral",
       "offset": 950,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Data\/ProfileData.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Data\/ProfileData.swift",
       "kind": "IntegerLiteral",
       "offset": 983,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Data\/ProfileData.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Data\/ProfileData.swift",
       "kind": "IntegerLiteral",
       "offset": 1019,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Data\/ProfileData.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Data\/ProfileData.swift",
       "kind": "IntegerLiteral",
       "offset": 1053,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Data\/ProfileData.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Data\/ProfileData.swift",
       "kind": "FloatLiteral",
       "offset": 1087,
       "length": 3,
       "value": "0.0"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Data\/ProfileData.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Data\/ProfileData.swift",
       "kind": "FloatLiteral",
       "offset": 1124,
       "length": 3,
       "value": "0.0"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Data\/ProfileData.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Data\/ProfileData.swift",
       "kind": "FloatLiteral",
       "offset": 1162,
       "length": 3,
       "value": "0.0"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Data\/ProfileData.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Data\/ProfileData.swift",
       "kind": "StringLiteral",
       "offset": 1196,
       "length": 2,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Data\/RerankConfig.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Data\/RerankConfig.swift",
       "kind": "IntegerLiteral",
       "offset": 297,
       "length": 2,
       "value": "32"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Data\/RerankConfig.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Data\/RerankConfig.swift",
       "kind": "StringLiteral",
       "offset": 577,
       "length": 9,
       "value": "\"min-max\""
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Data\/SamplerConfig.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Data\/SamplerConfig.swift",
       "kind": "FloatLiteral",
       "offset": 1098,
       "length": 3,
       "value": "0.8"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Data\/SamplerConfig.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Data\/SamplerConfig.swift",
       "kind": "FloatLiteral",
       "offset": 1125,
       "length": 4,
       "value": "0.95"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Data\/SamplerConfig.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Data\/SamplerConfig.swift",
       "kind": "IntegerLiteral",
       "offset": 1153,
       "length": 2,
       "value": "40"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Data\/SamplerConfig.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Data\/SamplerConfig.swift",
       "kind": "FloatLiteral",
       "offset": 1179,
       "length": 4,
       "value": "0.05"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Data\/SamplerConfig.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Data\/SamplerConfig.swift",
       "kind": "FloatLiteral",
       "offset": 1220,
       "length": 3,
       "value": "1.0"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Data\/SamplerConfig.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Data\/SamplerConfig.swift",
       "kind": "FloatLiteral",
       "offset": 1258,
       "length": 3,
       "value": "0.0"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Data\/SamplerConfig.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Data\/SamplerConfig.swift",
       "kind": "FloatLiteral",
       "offset": 1297,
       "length": 3,
       "value": "0.0"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Data\/SamplerConfig.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Data\/SamplerConfig.swift",
       "kind": "IntegerLiteral",
       "offset": 1324,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Data\/SamplerConfig.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Data\/SamplerConfig.swift",
       "kind": "BooleanLiteral",
       "offset": 1428,
       "length": 4,
       "value": "true"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Asr.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Asr.swift",
       "kind": "Array",
       "offset": 5834,
       "length": 2,
       "value": "[]"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Asr.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Asr.swift",
       "kind": "Array",
       "offset": 5860,
       "length": 2,
       "value": "[]"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/LLM.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/LLM.swift",
       "kind": "BooleanLiteral",
       "offset": 258,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/LLM.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/LLM.swift",
       "kind": "BooleanLiteral",
       "offset": 297,
       "length": 4,
       "value": "true"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Model.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Model.swift",
       "kind": "StringLiteral",
       "offset": 80,
       "length": 5,
       "value": "\"llm\""
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Model.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Model.swift",
       "kind": "StringLiteral",
       "offset": 101,
       "length": 5,
       "value": "\"vlm\""
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Model.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Model.swift",
       "kind": "StringLiteral",
       "offset": 1481,
       "length": 2,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Model.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Model.swift",
       "kind": "StringLiteral",
       "offset": 1518,
       "length": 2,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Model.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Model.swift",
       "kind": "StringLiteral",
       "offset": 5034,
       "length": 11,
       "value": "\"ModelType\""
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Model.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Model.swift",
       "kind": "StringLiteral",
       "offset": 5071,
       "length": 10,
       "value": "\"PluginId\""
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Model.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Model.swift",
       "kind": "StringLiteral",
       "offset": 5785,
       "length": 2,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Model.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Model.swift",
       "kind": "BooleanLiteral",
       "offset": 5812,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Model.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Model.swift",
       "kind": "IntegerLiteral",
       "offset": 6391,
       "length": 1,
       "value": "8"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Model.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Model.swift",
       "kind": "BooleanLiteral",
       "offset": 6425,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/NexaAI.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/NexaAI.swift",
       "kind": "BooleanLiteral",
       "offset": 775,
       "length": 4,
       "value": "true"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/NexaAI.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/NexaAI.swift",
       "kind": "StringLiteral",
       "offset": 905,
       "length": 20,
       "value": "\"com.nexaai.nexasdk\""
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/NexaAI.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/NexaAI.swift",
       "kind": "StringLiteral",
       "offset": 937,
       "length": 9,
       "value": "\"nexasdk\""
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/NexaAI.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/NexaAI.swift",
       "kind": "StringLiteral",
       "offset": 1012,
       "length": 2,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/NexaAI.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/NexaAI.swift",
       "kind": "StringLiteral",
       "offset": 1084,
       "length": 12,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/NexaAI.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/NexaAI.swift",
       "kind": "StringLiteral",
       "offset": 1095,
       "length": 2,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/NexaAI.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/NexaAI.swift",
       "kind": "StringLiteral",
       "offset": 1148,
       "length": 12,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/NexaAI.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/NexaAI.swift",
       "kind": "StringLiteral",
       "offset": 1159,
       "length": 2,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/NexaAI.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/NexaAI.swift",
       "kind": "StringLiteral",
       "offset": 1210,
       "length": 12,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/NexaAI.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/NexaAI.swift",
       "kind": "StringLiteral",
       "offset": 1221,
       "length": 2,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/NexaAI.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/NexaAI.swift",
       "kind": "StringLiteral",
       "offset": 1275,
       "length": 12,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/NexaAI.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/NexaAI.swift",
       "kind": "StringLiteral",
       "offset": 1286,
       "length": 2,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/NexaAI.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/NexaAI.swift",
       "kind": "StringLiteral",
       "offset": 1339,
       "length": 12,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/NexaAI.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/NexaAI.swift",
       "kind": "StringLiteral",
       "offset": 1350,
       "length": 2,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/NexaAI.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/NexaAI.swift",
       "kind": "StringLiteral",
       "offset": 1388,
       "length": 12,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/NexaAI.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/NexaAI.swift",
       "kind": "StringLiteral",
       "offset": 1399,
       "length": 2,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Plugin.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Plugin.swift",
       "kind": "IntegerLiteral",
       "offset": 470,
       "length": 1,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Plugin.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Plugin.swift",
       "kind": "IntegerLiteral",
       "offset": 475,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Plugin.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Plugin.swift",
       "kind": "IntegerLiteral",
       "offset": 539,
       "length": 1,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Plugin.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Plugin.swift",
       "kind": "IntegerLiteral",
       "offset": 544,
       "length": 1,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Plugin.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Plugin.swift",
       "kind": "IntegerLiteral",
       "offset": 608,
       "length": 1,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Plugin.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Plugin.swift",
       "kind": "IntegerLiteral",
       "offset": 613,
       "length": 1,
       "value": "2"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Plugin.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Plugin.swift",
       "kind": "IntegerLiteral",
       "offset": 677,
       "length": 1,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Plugin.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Plugin.swift",
       "kind": "IntegerLiteral",
       "offset": 682,
       "length": 1,
       "value": "3"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Plugin.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Plugin.swift",
       "kind": "IntegerLiteral",
       "offset": 746,
       "length": 1,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/Plugin.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/Plugin.swift",
       "kind": "IntegerLiteral",
       "offset": 751,
       "length": 1,
       "value": "4"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/VLM.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/VLM.swift",
       "kind": "BooleanLiteral",
       "offset": 259,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/NexaSdk\/NexaAI\/VLM.swift",
+      "filePath": "\/Users\/niki\/Documents\/nexasdk-bridge\/bindings\/ios\/NexaSdk\/Source\/NexaAI\/VLM.swift",
       "kind": "BooleanLiteral",
       "offset": 337,
       "length": 4,
