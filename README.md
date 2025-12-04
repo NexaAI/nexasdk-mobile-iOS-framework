@@ -1,6 +1,6 @@
-# Nexa SDK — iOS Framework
+# Nexa SDK — iOS/macOS Framework
 
-This repository contains the Nexa SDK packaged for iOS as an XCFramework. 
+This repository contains the Nexa SDK packaged for iOS/macOS as an XCFramework. 
 
 ## Requirements
 
@@ -72,7 +72,7 @@ let result = try embedder.embed(texts: texts, config: .init(batchSize: texts.cou
 print(result.embeddings.prefix(10))
 ```
 
-### 4. Example for Embedder:
+### 4. Example for Reranker:
 
 ```swift
 import NexaSdk
