@@ -25,42 +25,29 @@ dependencies: [
 
 ## Quick Usage (Swift)
 
+### Example for Asr
+
 ```swift
-import NexaSdk
 
-let llm = try LLM()
+let repoDir: URL = URL(string: "...")!
+let asr = try Asr()
+try await asr.load(from: repoDir)
 
-let repoDir: URL = "..."
-try await llm.load(from: repoDir)
+print(asr.supportedLanguages())
 
-let stream = await llm.generateAsyncStream(prompt: "Hello, Tell me a story")
-for try await token in stream {
-    print(token, terminator: "")
-}
+let audioPath = Bundle.main.path(forResource: "test", ofType: "wav")!
+let result = try await asr.transcribe(options: .init(audioPath: audioPath))
+
+print(result.asrResult)
+
 ```
 
-### 2. Example for VLM:
+### Example for Embedder:
 
 ```swift
 import NexaSdk
 
-let vlm = try VLM()
-
-let repoDir: URL = "..."
-try await vlm.load(from: repoDir)
-
-let stream = await vlm.generateAsyncStream(prompt: "Hello, Tell me a story")
-for try await token in stream {
-    print(token, terminator: "")
-}
-```
-
-### 3. Example for Embedder:
-
-```swift
-import NexaSdk
-
-let repoDir: URL = "..."
+let repoDir: URL = URL(string: "...")!
 let embedder = try Embedder(from: repoDir, plugin: .ane)
 
 let texts = [
@@ -72,12 +59,43 @@ let result = try embedder.embed(texts: texts, config: .init(batchSize: texts.cou
 print(result.embeddings.prefix(10))
 ```
 
-### 4. Example for Reranker:
+### Example for LLM
+```swift
+import NexaSdk
+
+let llm = try LLM()
+
+let repoDir: URL = URL(string: "...")!
+try await llm.load(from: repoDir)
+
+let stream = await llm.generateAsyncStream(prompt: "Hello, Tell me a story")
+for try await token in stream {
+    print(token, terminator: "")
+}
+```
+
+### Example for VLM:
 
 ```swift
 import NexaSdk
 
-let repoDir: URL = "..."
+let vlm = try VLM()
+
+let repoDir: URL = URL(string: "...")!
+try await vlm.load(from: repoDir)
+
+let stream = await vlm.generateAsyncStream(prompt: "Hello, Tell me a story")
+for try await token in stream {
+    print(token, terminator: "")
+}
+```
+
+### Example for Reranker:
+
+```swift
+import NexaSdk
+
+let repoDir: URL = URL(string: "...")!
 let reranker = try Reranker(from: repoDir)
 let query = "What is machine learning?"
 let documents = [
@@ -92,24 +110,8 @@ let result = try await reranker.rerank(query, documents: documents)
 print(result.scores)
 
 ```
-### 5. Example for Asr
 
-```swift
-
-let repoDir: URL = "..."
-let asr = try Asr()
-try await asr.load(from: repoDir)
-
-print(asr.supportedLanguages())
-
-let audioPath = Bundle.main.path(forResource: "test", ofType: "wav")!
-let result = try await asr.transcribe(options: .init(audioPath: audioPath))
-
-print(result.asrResult)
-
-```
-
-### 6. Other
+### Other
 
 ```swift
 // setup log
