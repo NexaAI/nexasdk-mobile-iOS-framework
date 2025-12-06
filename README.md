@@ -28,6 +28,8 @@ dependencies: [
 ### Example for Asr
 
 ```swift
+import NexaSdk
+import Foundation
 
 let repoDir: URL = URL(string: "...")!
 let asr = try Asr()
@@ -46,45 +48,81 @@ print(result.asrResult)
 
 ```swift
 import NexaSdk
+import Foundation
 
-let repoDir: URL = URL(string: "...")!
-let embedder = try Embedder(from: repoDir, plugin: .ane)
+let repoDir: URL = URL(string: "...")
+let embedder = try Embedder(from: repoDir)
 
 let texts = [
     "Hello world", "Good morning",
     "Machine learning is fascinating",
     "Natural language processing"
 ]
-let result = try embedder.embed(texts: texts, config: .init(batchSize: texts.count))
+let result = try embedder.embed(texts: texts, config: .init(batchSize: Int32(texts.count)))
 print(result.embeddings.prefix(10))
 ```
 
 ### Example for LLM
 ```swift
 import NexaSdk
+import Foundation
+
 
 let llm = try LLM()
 
 let repoDir: URL = URL(string: "...")!
 try await llm.load(from: repoDir)
 
-let stream = await llm.generateAsyncStream(prompt: "Hello, Tell me a story")
+var messages: [ChatMessage] = [
+    ChatMessage(role: .user, content: "Hello, Tell me a story")
+]
+
+// Round 1: Generate a story
+print("User: Hello, Tell me a story\n")
+print("Assistant: ", terminator: "")
+var prompt = try await llm.applyChatTemplate(messages: messages)
+var stream = await llm.generateAsyncStream(prompt: prompt)
+var response = ""
+for try await token in stream {
+    print(token, terminator: "")
+    response += token
+}
+print("\n")
+
+// Append assistant response and ask follow-up
+messages.append(ChatMessage(role: .assistant, content: response))
+messages.append(ChatMessage(role: .user, content: "What is the title of the story?"))
+
+// Round 2: Ask about the title
+print("User: What is the title of the story?\n")
+print("Assistant: ", terminator: "")
+prompt = try await llm.applyChatTemplate(messages: messages)
+stream = await llm.generateAsyncStream(prompt: prompt)
 for try await token in stream {
     print(token, terminator: "")
 }
+print()
 ```
 
 ### Example for VLM:
 
 ```swift
 import NexaSdk
+import Foundation
 
 let vlm = try VLM()
 
 let repoDir: URL = URL(string: "...")!
 try await vlm.load(from: repoDir)
 
-let stream = await vlm.generateAsyncStream(prompt: "Hello, Tell me a story")
+let imagePath = "path/to/your/image"
+let messages: [ChatMessage] = [
+    ChatMessage(role: .user, content: "What is in this image?", images: [imagePath])
+]
+
+let prompt = try await vlm.applyChatTemplate(messages: messages)
+let config = GenerationConfig(imagePaths: [imagePath])
+let stream = await vlm.generateAsyncStream(prompt: prompt, config: config)
 for try await token in stream {
     print(token, terminator: "")
 }
@@ -94,6 +132,7 @@ for try await token in stream {
 
 ```swift
 import NexaSdk
+import Foundation
 
 let repoDir: URL = URL(string: "...")!
 let reranker = try Reranker(from: repoDir)
