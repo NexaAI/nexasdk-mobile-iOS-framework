@@ -1,0 +1,6 @@
+framework module NexaSdk {
+  umbrella header "NexaSdk.h"
+  export *
+
+  module * { export * }
+}

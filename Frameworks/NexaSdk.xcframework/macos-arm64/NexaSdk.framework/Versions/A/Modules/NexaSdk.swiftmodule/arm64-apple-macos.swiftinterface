@@ -1,0 +1,527 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.2.1 effective-5.10 (swiftlang-6.2.1.4.8 clang-1700.4.4.1)
+// swift-module-flags: -target arm64-apple-macos15 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-upcoming-feature DisableOutwardActorInference -enable-upcoming-feature InferSendableFromCaptures -enable-upcoming-feature GlobalActorIsolatedTypesUsability -enable-upcoming-feature MemberImportVisibility -enable-upcoming-feature InferIsolatedConformances -enable-upcoming-feature NonisolatedNonsendingByDefault -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name NexaSdk
+// swift-module-flags-ignorable:  -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2.1
+import AVFAudio
+import Foundation
+@_exported import NexaSdk
+import OSLog
+import Swift
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+public struct ChatMessage {
+  public var role: NexaSdk.Role
+  public var content: Swift.String
+  public var images: [Swift.String]
+  public var audios: [Swift.String]
+  public init(role: NexaSdk.Role, content: Swift.String, images: [Swift.String] = [], audios: [Swift.String] = [])
+}
+public enum Role : Swift.String {
+  case user
+  case assistant
+  case system
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct EmbeddingConfig {
+  public var batchSize: Swift.Int32
+  public var normalizeMethod: NexaSdk.EmbeddingConfig.NormalizeMethod?
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(batchSize: Swift.Int32, normalizeMethod: NexaSdk.EmbeddingConfig.NormalizeMethod? = .l2)
+  #endif
+}
+extension NexaSdk.EmbeddingConfig {
+  public enum NormalizeMethod : Swift.String {
+    case l2
+    case mean
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+}
+public struct GenerationConfig : Swift.Codable {
+  public var maxTokens: Swift.Int32
+  public var stop: [Swift.String]
+  public var nPast: Swift.Int32
+  public var samplerConfig: NexaSdk.SamplerConfig
+  public var imagePaths: [Swift.String]
+  public var audioPaths: [Swift.String]
+  public var imageMaxLength: Swift.Int32
+  public init(maxTokens: Swift.Int32 = 1024, stop: [Swift.String] = [], nPast: Swift.Int32 = 0, samplerConfig: NexaSdk.SamplerConfig = .default, imagePaths: [Swift.String] = [], audioPaths: [Swift.String] = [], imageMaxLength: Swift.Int32 = 256)
+  public static let `default`: NexaSdk.GenerationConfig
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ModelConfig : Swift.Codable {
+  public var nCtx: Swift.Int32
+  public var nThreads: Swift.Int32
+  public var nThreadsBatch: Swift.Int32
+  public var nBatch: Swift.Int32
+  public var nUbatch: Swift.Int32
+  public var nSeqMax: Swift.Int32
+  public var chatTemplatePath: Swift.String?
+  public var chatTemplateContent: Swift.String?
+  public static let `default`: NexaSdk.ModelConfig
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(nCtx: Swift.Int32 = 2048, nThreads: Swift.Int32 = 0, nThreadsBatch: Swift.Int32 = 0, nBatch: Swift.Int32 = 0, nUbatch: Swift.Int32 = 0, nSeqMax: Swift.Int32 = 0, chatTemplatePath: Swift.String? = nil, chatTemplateContent: Swift.String? = nil)
+  #endif
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ProfileData : Swift.CustomStringConvertible, Swift.Codable {
+  public let ttft: Swift.Int64
+  public let promptTime: Swift.Int64
+  public let decodeTime: Swift.Int64
+  public let promptTokens: Swift.Int64
+  public let generatedTokens: Swift.Int64
+  public let audioDuration: Swift.Int64
+  public let prefillSpeed: Swift.Double
+  public let decodingSpeed: Swift.Double
+  public let realTimeFactor: Swift.Double
+  public let stopReason: Swift.String
+  public init(ttft: Swift.Int64 = 0, promptTime: Swift.Int64 = 0, decodeTime: Swift.Int64 = 0, promptTokens: Swift.Int64 = 0, generatedTokens: Swift.Int64 = 0, audioDuration: Swift.Int64 = 0, prefillSpeed: Swift.Double = 0.0, decodingSpeed: Swift.Double = 0.0, realTimeFactor: Swift.Double = 0.0, stopReason: Swift.String = "")
+  public var description: Swift.String {
+    get
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct RerankConfig {
+  public var batchSize: Swift.Int32
+  public var normalizeMethod: NexaSdk.RerankConfig.NormalizeMethod?
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(batchSize: Swift.Int32 = 32, normalizeMethod: NexaSdk.RerankConfig.NormalizeMethod? = .softmax)
+  #endif
+}
+extension NexaSdk.RerankConfig {
+  public enum NormalizeMethod : Swift.String, Swift.CaseIterable {
+    case softmax
+    case minMax
+    case l2
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    public typealias AllCases = [NexaSdk.RerankConfig.NormalizeMethod]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [NexaSdk.RerankConfig.NormalizeMethod] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+}
+public struct SamplerConfig : Swift.Codable {
+  public var temperature: Swift.Float
+  public var topP: Swift.Float
+  public var topK: Swift.Int32
+  public var minP: Swift.Float
+  public var repetitionPenalty: Swift.Float
+  public var presencePenalty: Swift.Float
+  public var frequencyPenalty: Swift.Float
+  public var seed: Swift.Int32
+  public var grammarPath: Swift.String?
+  public var grammarString: Swift.String?
+  public var enableJson: Swift.Bool
+  public static let `default`: NexaSdk.SamplerConfig
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(temperature: Swift.Float = 0.8, topP: Swift.Float = 0.95, topK: Swift.Int32 = 40, minP: Swift.Float = 0.05, repetitionPenalty: Swift.Float = 1.0, presencePenalty: Swift.Float = 0.0, frequencyPenalty: Swift.Float = 0.0, seed: Swift.Int32 = 0, grammarPath: Swift.String? = nil, grammarString: Swift.String? = nil, enableJson: Swift.Bool = true)
+  #endif
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+final public class Asr {
+  final public let plugin: NexaSdk.Plugin
+  public init(plugin: NexaSdk.Plugin = .ane) throws
+  @NexaSdk.NexaAIActor final public func load(_ options: NexaSdk.AsrOptions) async throws
+  @NexaSdk.NexaAIActor final public func transcribe(options: NexaSdk.AsrTranscribeOptions) throws -> NexaSdk.AsrResponse
+  final public func supportedLanguages() -> [Swift.String]
+  @objc deinit
+}
+extension NexaSdk.Asr {
+  #if compiler(>=5.3) && $NonescapableTypes
+  final public func startRecordingStream(config: NexaSdk.ASRStreamConfig = .init(), block tapBlock: AVFAudio.AVAudioNodeTapBlock? = nil) throws -> _Concurrency.AsyncThrowingStream<Swift.String, any Swift.Error>
+  #endif
+  final public func stopRecordingStream()
+  #if compiler(>=5.3) && $NonescapableTypes
+  final public func startRecording(block tapBlock: AVFAudio.AVAudioNodeTapBlock? = nil) throws
+  #endif
+  final public func stopRecording()
+  final public func startStream(config: NexaSdk.ASRStreamConfig = .init()) -> _Concurrency.AsyncThrowingStream<Swift.String, any Swift.Error>
+  final public func stopStream(graceful: Swift.Bool = true)
+  final public func streamPushSamples(_ samples: [Swift.Float]) throws
+}
+extension NexaSdk.Asr {
+  @NexaSdk.NexaAIActor final public func load(from repoFolder: Foundation.URL) async throws
+}
+extension NexaSdk.Asr {
+  public enum AsrError : Foundation.LocalizedError, Swift.CustomStringConvertible {
+    case pluginNotSupport(NexaSdk.Plugin)
+    case loadError(Swift.Int32)
+    case transcribeFailed(Swift.Int32)
+    case streamFailed(Swift.Int32)
+    case streamRecordingFailed
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var errorDescription: Swift.String? {
+      get
+    }
+    #endif
+    public var description: Swift.String {
+      get
+    }
+  }
+}
+public enum Language : Swift.String, Swift.Codable {
+  case en
+  case ch
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct AsrOptions : Swift.Codable {
+  public let modelPath: Swift.String
+  public let language: NexaSdk.Language
+  public init(modelPath: Swift.String, language: NexaSdk.Language = .en)
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct AsrTranscribeOptions : Swift.Codable {
+  public let audioPath: Swift.String
+  public let language: NexaSdk.Language
+  public init(audioPath: Swift.String, language: NexaSdk.Language = .en)
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct AsrResult : Swift.Codable {
+  public let transcript: Swift.String
+  public let confidences: [Swift.Float]
+  public let timestamps: [Swift.Float]
+  public init(transcript: Swift.String, confidences: [Swift.Float] = [], timestamps: [Swift.Float] = [])
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct AsrResponse : Swift.Codable {
+  public let asrResult: NexaSdk.AsrResult
+  public let profileData: NexaSdk.ProfileData?
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(asrResult: NexaSdk.AsrResult, profileData: NexaSdk.ProfileData? = nil)
+  #endif
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ASRStreamConfig {
+  public enum TimestampMode : Swift.String {
+    case segment
+    case word
+    case none
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public var language: NexaSdk.Language
+  public var chunkDuration: Swift.Float
+  public var overlapDuration: Swift.Float
+  public var sampleRate: Swift.Int32
+  public var maxQueueSize: Swift.Int32
+  public var bufferSize: Swift.Int32
+  public var timestamps: NexaSdk.ASRStreamConfig.TimestampMode
+  public var beamSize: Swift.Int32
+  public init(language: NexaSdk.Language = .en, chunkDuration: Swift.Float = 4.0, overlapDuration: Swift.Float = 3.0, sampleRate: Swift.Int32 = 16000, maxQueueSize: Swift.Int32 = 10, bufferSize: Swift.Int32 = 512, timestamps: NexaSdk.ASRStreamConfig.TimestampMode = .none, beamSize: Swift.Int32 = 5)
+}
+public struct EmbedResult {
+  public let embeddings: [[Swift.Float]]
+  public let profileData: NexaSdk.ProfileData
+}
+final public class Embedder {
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(modelPath: Swift.String, tokenizerPath: Swift.String? = nil, deviceId: Swift.String? = nil, plugin: NexaSdk.Plugin = .cpu_gpu) throws
+  #endif
+  final public func embed(inputIds: [[Swift.Int32]], config: NexaSdk.EmbeddingConfig) throws -> NexaSdk.EmbedResult
+  final public func embed(texts: [Swift.String], config: NexaSdk.EmbeddingConfig) throws -> NexaSdk.EmbedResult
+  final public func embed(imagePaths: [Swift.String], config: NexaSdk.EmbeddingConfig) throws -> NexaSdk.EmbedResult
+  final public func dim() throws -> Swift.Int32
+  @objc deinit
+}
+extension NexaSdk.Embedder {
+  convenience public init(from repoFolder: Foundation.URL, plugin: NexaSdk.Plugin = .cpu_gpu) throws
+}
+extension NexaSdk.Embedder {
+  public enum EmbedderError : Foundation.LocalizedError {
+    case pluginNotSupport(NexaSdk.Plugin)
+    case creationFailed(Swift.Int32)
+    case embedFailed(Swift.Int32)
+    case embeddingDim(Swift.Int32)
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var errorDescription: Swift.String? {
+      get
+    }
+    #endif
+  }
+}
+final public class LLM : NexaSdk.Model {
+  final public let plugin: NexaSdk.Plugin
+  @NexaSdk.NexaAIActor final public var lastProfileData: NexaSdk.ProfileData? {
+    get
+  }
+  final public var isLoaded: Swift.Bool {
+    get
+  }
+  final public let type: NexaSdk.ModelType
+  public init(plugin: NexaSdk.Plugin = .cpu_gpu) throws
+  @NexaSdk.NexaAIActor final public func load(_ options: NexaSdk.ModelOptions) throws
+  @NexaSdk.NexaAIActor final public func generate(prompt: Swift.String, config: NexaSdk.GenerationConfig = .default) throws -> NexaSdk.GenerateResult
+  @NexaSdk.NexaAIActor final public func generateAsyncStream(messages: [NexaSdk.ChatMessage], options: NexaSdk.GenerationOptions = .init()) throws -> _Concurrency.AsyncThrowingStream<Swift.String, any Swift.Error>
+  @NexaSdk.NexaAIActor final public func applyChatTemplate(messages: [NexaSdk.ChatMessage], options: NexaSdk.ChatTemplateOptions = .init()) throws -> Swift.String
+  @NexaSdk.NexaAIActor final public func reset()
+  final public func saveKVCache(to path: Swift.String) throws
+  final public func loadKVCache(from path: Swift.String) throws
+  final public func stopStream()
+  @NexaSdk.NexaAIActor final public func generateAsyncStream(prompt: Swift.String, config: NexaSdk.GenerationConfig = .default) -> _Concurrency.AsyncThrowingStream<Swift.String, any Swift.Error>
+  @discardableResult
+  @NexaSdk.NexaAIActor final public func generate(prompt: Swift.String, config: NexaSdk.GenerationConfig, onToken: @escaping (Swift.String) -> Swift.Bool) throws -> NexaSdk.GenerateResult
+  @objc deinit
+}
+public enum LLMError : Foundation.LocalizedError, Swift.CustomStringConvertible {
+  case pluginNotSupport(NexaSdk.Plugin)
+  case createFailed
+  case modelLoadingFailed(Swift.Int32)
+  case kvCacheSaveFailed(Swift.Int32)
+  case kvCacheLoadFailed(Swift.Int32)
+  case generateFailed(Swift.Int32)
+  case applyChatTemplateFailed(Swift.Int32)
+  case generateEmptyString
+  #if compiler(>=5.3) && $NonescapableTypes
+  public var errorDescription: Swift.String? {
+    get
+  }
+  #endif
+  public var description: Swift.String {
+    get
+  }
+}
+public enum ModelType : Swift.String, Swift.CaseIterable {
+  case llm
+  case vlm
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias AllCases = [NexaSdk.ModelType]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [NexaSdk.ModelType] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public protocol Model {
+  @NexaSdk.NexaAIActor func load(_ options: NexaSdk.ModelOptions) throws
+  @NexaSdk.NexaAIActor func applyChatTemplate(messages: [NexaSdk.ChatMessage], options: NexaSdk.ChatTemplateOptions) throws -> Swift.String
+  @NexaSdk.NexaAIActor func generateAsyncStream(messages: [NexaSdk.ChatMessage], options: NexaSdk.GenerationOptions) throws -> _Concurrency.AsyncThrowingStream<Swift.String, any Swift.Error>
+  @NexaSdk.NexaAIActor func generate(prompt: Swift.String, config: NexaSdk.GenerationConfig) throws -> NexaSdk.GenerateResult
+  #if compiler(>=5.3) && $NonescapableTypes
+  @NexaSdk.NexaAIActor var lastProfileData: NexaSdk.ProfileData? { get }
+  #endif
+  @NexaSdk.NexaAIActor func reset()
+  func stopStream()
+  var isLoaded: Swift.Bool { get }
+  var type: NexaSdk.ModelType { get }
+  var plugin: NexaSdk.Plugin { get }
+}
+extension NexaSdk.Model {
+  @NexaSdk.NexaAIActor public func generate(messages: [NexaSdk.ChatMessage], options: NexaSdk.GenerationOptions = .init()) throws -> NexaSdk.GenerateResult
+  @NexaSdk.NexaAIActor public func load(from repoFolder: Foundation.URL, modelFileName: Swift.String = "", mmprojFileName: Swift.String = "") throws
+}
+public struct GenerateResult {
+  public var response: Swift.String
+  public var profileData: NexaSdk.ProfileData
+  public init(response: Swift.String, profileData: NexaSdk.ProfileData)
+}
+public struct GenerationOptions {
+  public var config: NexaSdk.GenerationConfig
+  public var templateOptions: NexaSdk.ChatTemplateOptions
+  public init(config: NexaSdk.GenerationConfig = .default, templateOptions: NexaSdk.ChatTemplateOptions = .init())
+}
+public struct ChatTemplateOptions {
+  public var tools: Swift.String
+  public var enableThinking: Swift.Bool
+  public init(tools: Swift.String = "", enableThinking: Swift.Bool = false)
+}
+public struct ModelOptions {
+  public var modelPath: Swift.String
+  public var tokenizerPath: Swift.String?
+  public var mmprojPath: Swift.String?
+  public var config: NexaSdk.ModelConfig
+  public var deviceId: Swift.String?
+  public var gpuLayers: Swift.Int32
+  public var enableThinking: Swift.Bool
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(modelPath: Swift.String, tokenizerPath: Swift.String? = nil, mmprojPath: Swift.String? = nil, config: NexaSdk.ModelConfig = .default, deviceId: Swift.String? = nil, gpuLayers: Swift.Int32 = 8, enableThinking: Swift.Bool = false)
+  #endif
+}
+public struct LogLevel {
+  public static let trace: NexaSdk.LogLevel
+  public static let debug: NexaSdk.LogLevel
+  public static let info: NexaSdk.LogLevel
+  public static let warn: NexaSdk.LogLevel
+  public static let error: NexaSdk.LogLevel
+}
+@_hasMissingDesignatedInitializers public class NexaAI {
+  public class func install(_ logLevel: [NexaSdk.LogLevel] = [.error])
+  public static var version: Swift.String {
+    get
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @globalActor public actor NexaAIActor {
+  public static let shared: NexaSdk.NexaAIActor
+  public typealias ActorType = NexaSdk.NexaAIActor
+  @objc deinit
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+  @_semantics("defaultActor") nonisolated final public var unownedExecutor: _Concurrency.UnownedSerialExecutor {
+    get
+  }
+}
+public enum Plugin : Swift.String, Swift.CaseIterable {
+  public struct Device {
+    public let id: Swift.String
+    public let name: Swift.String
+  }
+  public struct SupportModule : Swift.OptionSet {
+    public let rawValue: Swift.Int
+    public init(rawValue: Swift.Int)
+    public static let llm: NexaSdk.Plugin.SupportModule
+    public static let vlm: NexaSdk.Plugin.SupportModule
+    public static let embedder: NexaSdk.Plugin.SupportModule
+    public static let rerank: NexaSdk.Plugin.SupportModule
+    public static let asr: NexaSdk.Plugin.SupportModule
+    public typealias ArrayLiteralElement = NexaSdk.Plugin.SupportModule
+    public typealias Element = NexaSdk.Plugin.SupportModule
+    public typealias RawValue = Swift.Int
+  }
+  case cpu_gpu
+  case ane
+  public var supportModule: NexaSdk.Plugin.SupportModule {
+    get
+  }
+  public var deviceList: [NexaSdk.Plugin.Device] {
+    get
+  }
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias AllCases = [NexaSdk.Plugin]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [NexaSdk.Plugin] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct RerankerResult {
+  public let scores: [Swift.Float]
+  public let profileData: NexaSdk.ProfileData
+}
+final public class Reranker {
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(modelPath: Swift.String, tokenizerPath: Swift.String? = nil, deviceId: Swift.String? = nil, plugin: NexaSdk.Plugin = .cpu_gpu) throws
+  #endif
+  @NexaSdk.NexaAIActor final public func rerank(_ query: Swift.String, documents: [Swift.String], config: NexaSdk.RerankConfig = .init()) throws -> NexaSdk.RerankerResult
+  @objc deinit
+}
+extension NexaSdk.Reranker {
+  convenience public init(from repoFolder: Foundation.URL, plugin: NexaSdk.Plugin = .cpu_gpu) throws
+}
+extension NexaSdk.Reranker {
+  public enum RerankerError : Foundation.LocalizedError {
+    case pluginNotSupport(NexaSdk.Plugin)
+    case creationFailed(Swift.Int32)
+    case rerankFailed(Swift.Int32)
+    #if compiler(>=5.3) && $NonescapableTypes
+    public var errorDescription: Swift.String? {
+      get
+    }
+    #endif
+  }
+}
+final public class VLM : NexaSdk.Model {
+  final public let plugin: NexaSdk.Plugin
+  @NexaSdk.NexaAIActor final public var lastProfileData: NexaSdk.ProfileData? {
+    get
+  }
+  final public var isLoaded: Swift.Bool {
+    get
+  }
+  final public let type: NexaSdk.ModelType
+  public init(plugin: NexaSdk.Plugin = .cpu_gpu) throws
+  @NexaSdk.NexaAIActor final public func load(_ options: NexaSdk.ModelOptions) throws
+  final public func stopStream()
+  @NexaSdk.NexaAIActor final public func generate(prompt: Swift.String, config: NexaSdk.GenerationConfig = .default) throws -> NexaSdk.GenerateResult
+  @NexaSdk.NexaAIActor final public func generate(messages: [NexaSdk.ChatMessage], options: NexaSdk.GenerationOptions = .init()) throws -> NexaSdk.GenerateResult
+  @NexaSdk.NexaAIActor final public func generateAsyncStream(messages: [NexaSdk.ChatMessage], options: NexaSdk.GenerationOptions = .init()) throws -> _Concurrency.AsyncThrowingStream<Swift.String, any Swift.Error>
+  @NexaSdk.NexaAIActor final public func applyChatTemplate(messages: [NexaSdk.ChatMessage], options: NexaSdk.ChatTemplateOptions = .init()) throws -> Swift.String
+  @NexaSdk.NexaAIActor final public func reset()
+  @NexaSdk.NexaAIActor final public func generateAsyncStream(prompt: Swift.String, config: NexaSdk.GenerationConfig = .default) -> _Concurrency.AsyncThrowingStream<Swift.String, any Swift.Error>
+  @discardableResult
+  @NexaSdk.NexaAIActor final public func generate(prompt: Swift.String, config: NexaSdk.GenerationConfig = .default, onToken: @escaping (Swift.String) -> Swift.Bool) throws -> NexaSdk.GenerateResult
+  @objc deinit
+}
+public enum VLMError : Foundation.LocalizedError, Swift.CustomStringConvertible {
+  case pluginNotSupport(NexaSdk.Plugin)
+  case createFailed
+  case modelLoadingFailed(Swift.Int32)
+  case kvCacheSaveFailed(Swift.Int32)
+  case kvCacheLoadFailed(Swift.Int32)
+  case generateFailed(Swift.Int32)
+  case applyChatTemplateFailed(Swift.Int32)
+  case generateEmptyString
+  #if compiler(>=5.3) && $NonescapableTypes
+  public var errorDescription: Swift.String? {
+    get
+  }
+  #endif
+  public var description: Swift.String {
+    get
+  }
+}
+extension NexaSdk.Role : Swift.Equatable {}
+extension NexaSdk.Role : Swift.Hashable {}
+extension NexaSdk.Role : Swift.RawRepresentable {}
+extension NexaSdk.EmbeddingConfig.NormalizeMethod : Swift.Equatable {}
+extension NexaSdk.EmbeddingConfig.NormalizeMethod : Swift.Hashable {}
+extension NexaSdk.EmbeddingConfig.NormalizeMethod : Swift.RawRepresentable {}
+extension NexaSdk.RerankConfig.NormalizeMethod : Swift.Equatable {}
+extension NexaSdk.RerankConfig.NormalizeMethod : Swift.Hashable {}
+extension NexaSdk.RerankConfig.NormalizeMethod : Swift.RawRepresentable {}
+extension NexaSdk.Language : Swift.Equatable {}
+extension NexaSdk.Language : Swift.Hashable {}
+extension NexaSdk.Language : Swift.RawRepresentable {}
+extension NexaSdk.ASRStreamConfig.TimestampMode : Swift.Equatable {}
+extension NexaSdk.ASRStreamConfig.TimestampMode : Swift.Hashable {}
+extension NexaSdk.ASRStreamConfig.TimestampMode : Swift.RawRepresentable {}
+extension NexaSdk.ModelType : Swift.Equatable {}
+extension NexaSdk.ModelType : Swift.Hashable {}
+extension NexaSdk.ModelType : Swift.RawRepresentable {}
+extension NexaSdk.NexaAIActor : _Concurrency.GlobalActor {}
+extension NexaSdk.Plugin : Swift.Equatable {}
+extension NexaSdk.Plugin : Swift.Hashable {}
+extension NexaSdk.Plugin : Swift.RawRepresentable {}
